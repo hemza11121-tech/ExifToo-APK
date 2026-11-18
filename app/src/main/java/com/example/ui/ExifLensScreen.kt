@@ -119,7 +119,11 @@ fun ExifLensScreen(
                     clipboard.setPrimaryClip(ClipData.newPlainText(event.label, event.text))
                 }
                 is ExifLensEvent.RequestSafExport -> {
-                    createDocumentLauncher.launch(event.suggestedName)
+                    runCatching {
+                        createDocumentLauncher.launch(event.suggestedName)
+                    }.onFailure {
+                        snackbarHostState.showSnackbar("لا يتوفر مدير ملفات لحفظ النسخة على هذا الجهاز")
+                    }
                 }
                 is ExifLensEvent.ShareImage -> {
                     val shareIntent = Intent(Intent.ACTION_SEND).apply {
@@ -127,22 +131,34 @@ fun ExifLensScreen(
                         putExtra(Intent.EXTRA_STREAM, event.uri)
                         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     }
-                    context.startActivity(
-                        Intent.createChooser(shareIntent, context.getString(R.string.action_share))
-                    )
+                    runCatching {
+                        context.startActivity(
+                            Intent.createChooser(shareIntent, context.getString(R.string.action_share))
+                        )
+                    }.onFailure {
+                        snackbarHostState.showSnackbar("لا يوجد تطبيق متاح لمشاركة الصورة")
+                    }
                 }
             }
         }
     }
 
-    val launchGalleryPicker = {
-        photoPickerLauncher.launch(
-            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-        )
+    val launchRawPicker = {
+        runCatching {
+            openDocumentLauncher.launch(arrayOf("image/*"))
+        }
+        Unit
     }
 
-    val launchRawPicker = {
-        openDocumentLauncher.launch(arrayOf("image/*"))
+    val launchGalleryPicker = {
+        runCatching {
+            photoPickerLauncher.launch(
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+            )
+        }.onFailure {
+            launchRawPicker()
+        }
+        Unit
     }
 
     val openMapForCoordinates: (Double, Double) -> Unit = { lat, lng ->

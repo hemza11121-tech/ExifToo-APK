@@ -139,4 +139,17 @@ class ExampleRobolectricTest {
         assertTrue(tags.any { it.tagName == "Model" && it.tagValue == "EOS R5" })
         assertTrue(tags.any { it.directory.contains("GPS", ignoreCase = true) })
     }
+
+    @get:org.junit.Rule
+    val composeTestRule = androidx.compose.ui.test.junit4.createAndroidComposeRule<MainActivity>()
+
+    @Test
+    fun `MainActivity launches and renders EmptyStateScreen without crashing`() {
+        composeTestRule.onNode(androidx.compose.ui.test.hasTestTag("pick_gallery_button"))
+            .assertExists()
+        composeTestRule.onNode(androidx.compose.ui.test.hasTestTag("pick_raw_file_button"))
+            .assertExists()
+        composeTestRule.onNode(androidx.compose.ui.test.hasTestTag("theme_toggle_button"))
+            .assertExists()
+    }
 }
