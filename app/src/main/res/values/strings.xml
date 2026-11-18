@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">ExifLens</string>
+    <string name="app_subtitle">فاحص ومحرر البيانات الوصفية للصور</string>
+
+    <!-- Empty State -->
+    <string name="empty_title">افحص بيانات صورك الوصفية</string>
+    <string name="empty_description">استعرض وسوم EXIF و XMP و IPTC وإحداثيات GPS المخفية، وعدّلها أو احذفها لحماية خصوصيتك قبل المشاركة.</string>
+    <string name="action_pick_gallery">اختيار صورة من المعرض</string>
+    <string name="action_pick_raw">ملف أصلي (Raw File)</string>
+
+    <!-- Tabs -->
+    <string name="tab_overview">ملخص الفحص</string>
+    <string name="tab_all_tags">جميع الوسوم</string>
+    <string name="tab_editor">تعديل وحذف</string>
+
+    <!-- Privacy & GPS -->
+    <string name="privacy_gps_warning">تم العثور على إحداثيات GPS دقيقة!</string>
+    <string name="privacy_gps_safe">لا توجد إحداثيات موقع جغرافي</string>
+    <string name="privacy_clean_badge">الصورة نظيفة من البيانات الوصفية</string>
+    <string name="action_strip_gps">مسح الموقع فقط</string>
+    <string name="action_strip_all">تنظيف شامل للبيانات (Scrub)</string>
+    <string name="action_deep_scrub">تنظيف عميق (إعادة ترميز الصورة)</string>
+    <string name="action_open_map">فتح على الخريطة</string>
+    <string name="action_copy">نسخ</string>
+
+    <!-- Actions -->
+    <string name="action_save_gallery">حفظ في المعرض</string>
+    <string name="action_export_file">تصدير نسخة</string>
+    <string name="action_share">مشاركة</string>
+    <string name="action_apply_edits">تطبيق التعديلات</string>
+    <string name="action_change_photo">تغيير الصورة</string>
+    <string name="action_export_report">نسخ التقرير</string>
+
+    <!-- Labels -->
+    <string name="label_camera">الكاميرا والعدسة</string>
+    <string name="label_exposure">إعدادات التعريض</string>
+    <string name="label_gps">الموقع الجغرافي (GPS)</string>
+    <string name="label_file_info">معلومات الملف</string>
+    <string name="label_exiftool_cmd">أمر ExifTool المكافئ</string>
+    <string name="search_tags_hint">ابحث في الوسوم أو القيم (مثل ISO, GPS, Model)...</string>
+</resources>

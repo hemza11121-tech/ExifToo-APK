@@ -1,0 +1,6 @@
+{
+  "name": "ExifLens",
+  "description": "أداة متقدمة لفحص وتعديل وحذف البيانات الوصفية (EXIF / GPS / XMP / IPTC) للصور وحماية الخصوصية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
